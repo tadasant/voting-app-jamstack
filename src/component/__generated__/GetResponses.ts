@@ -3,7 +3,7 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetResponses
+// GraphQL subscription operation: GetResponses
 // ====================================================
 
 export interface GetResponses_Response {

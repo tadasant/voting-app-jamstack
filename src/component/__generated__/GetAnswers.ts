@@ -3,20 +3,19 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetAnswers
+// GraphQL subscription operation: GetAnswers
 // ====================================================
 
-export interface GetAnswers_Question {
-  __typename: "Question";
-  answer1: string;
-  answer2: string;
+export interface GetAnswers_Answer {
+  __typename: "Answer";
+  value: string;
 }
 
 export interface GetAnswers {
   /**
-   * fetch data from the table: "Question"
+   * fetch data from the table: "Answer"
    */
-  Question: GetAnswers_Question[];
+  Answer: GetAnswers_Answer[];
 }
 
 export interface GetAnswersVariables {

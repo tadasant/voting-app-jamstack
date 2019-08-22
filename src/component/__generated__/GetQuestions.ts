@@ -3,7 +3,7 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetQuestions
+// GraphQL subscription operation: GetQuestions
 // ====================================================
 
 export interface GetQuestions_Question {

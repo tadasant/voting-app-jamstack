@@ -7,9 +7,8 @@ import { GetAnswers } from "./__generated__/GetAnswers";
 
 const GET_ANSWERS = gql`
 	subscription GetAnswers($prompt: String!) {
-		Question(where: { prompt: { _eq: $prompt } }) {
-			answer1
-			answer2
+		Answer(where: { question: { _eq: $prompt } }) {
+			value
 		}
 	}
 `;
@@ -35,7 +34,7 @@ const Answers: React.FC<Props> = props => {
 	});
 	const [addResponse] = useMutation(ADD_RESPONSE);
 
-	if (!data || !data.Question || data.Question.length !== 1) {
+	if (!data || !data.Answer) {
 		return null;
 	}
 
@@ -48,13 +47,15 @@ const Answers: React.FC<Props> = props => {
 		<div className="answer-container">
 			{showResponses ? (
 				<React.Fragment>
-					<AnswerLabel value={data.Question[0].answer1} prompt={props.prompt} />
-					<AnswerLabel value={data.Question[0].answer2} prompt={props.prompt} />
+					{data.Answer.map(answer => (
+						<AnswerLabel value={answer.value} prompt={props.prompt} />
+					))}
 				</React.Fragment>
 			) : (
 				<React.Fragment>
-					<AnswerButton onClick={onClick} value={data.Question[0].answer1} />
-					<AnswerButton onClick={onClick} value={data.Question[0].answer2} />
+					{data.Answer.map(answer => (
+						<AnswerButton onClick={onClick} value={answer.value} />
+					))}
 				</React.Fragment>
 			)}
 		</div>
